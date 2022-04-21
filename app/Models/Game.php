@@ -47,4 +47,23 @@ class Game extends Model
 
         // SELECT COUNT(*) AS total, user_id FROM games WHERE result=1 GROUP BY user_id
     }
+
+    public function countLosers()
+    {
+        return $this->select('user_id', $this->raw('count(*) AS total'))
+            ->where('result', '=', false)
+            ->groupBy('user_id')
+            ->get();
+    }
+
+    public function countWin()
+    {
+        return $this->select('id', $this->raw('count(*) AS total'))
+            ->where('result', '=', true)
+            ->groupBy('id')
+            ->get();
+
+        // SELECT COUNT(*) AS total, user_id FROM games WHERE result=1 GROUP BY user_id
+    }
+
 }
