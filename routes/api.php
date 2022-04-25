@@ -27,7 +27,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('/players', [PlayerController::class, 'index'])->name('api.player.index'); // Muestra usuario/s de la bbdd
     Route::put('/players', [PlayerController::class, 'update'])->name('api.player.update'); // Actualiza nombre usuario
 
-    Route::post('/players/games/', [PlayerController::class, 'storeGame'])->name('api.player.store_game'); // Crea una tirada del usuario logueado
+    Route::post('/players/games', [PlayerController::class, 'storeGame'])->name('api.player.store_game'); // Crea una tirada del usuario logueado
     Route::delete('/players/games', [PlayerController::class, 'destroyGame'])->name('api.player.destroy_game'); // Elimina todas las tiradas del usuario logueado
     Route::get('/players/games', [PlayerController::class, 'showGame'])->name('api.player.show_game'); // Muestra todas las tiradas del usuario logueado
 
