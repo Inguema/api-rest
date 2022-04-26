@@ -68,11 +68,7 @@ class PlayerControllerTest extends TestCase
             'Accept' => 'application/json'
         ];
 
-        $data =  [
-            'name' => 'AdminPlus'
-        ];
-
-        $response = $this->withHeaders($headers)->delete('/api/players/games', $data);
+        $response = $this->withHeaders($headers)->delete('/api/players/games');
         $response->assertStatus($response->getStatusCode());
     }
 
@@ -82,11 +78,7 @@ class PlayerControllerTest extends TestCase
         'Accept' => 'application/json'
         ];
 
-        $data =  [
-            'name' => 'AdminPlus'
-        ];
-
-        $response = $this->withHeaders($headers)->delete('/api/players/games', $data);
+        $response = $this->withHeaders($headers)->get('/api/players/games');
         $response->assertStatus($response->getStatusCode());
         //print_r($response->json());
     }
@@ -98,11 +90,7 @@ class PlayerControllerTest extends TestCase
             'Accept' => 'application/json'
         ];
 
-        $data =  [
-            'name' => 'AdminPlus'
-        ];
-
-        $response = $this->withHeaders($headers)->get('/api/players/ranking', $data);
+        $response = $this->withHeaders($headers)->get('/api/players/ranking');
         $response->assertStatus($response->getStatusCode());
     }
 
@@ -111,13 +99,9 @@ class PlayerControllerTest extends TestCase
        $headers = [
             'Authorization' => 'Bearer '. $this->login(),
             'Accept' => 'application/json'
-        ];
+       ];
 
-        $data =  [
-            'name' => 'AdminPlus'
-        ];
-
-        $response = $this->withHeaders($headers)->get('/api/players/loser', $data);
+        $response = $this->withHeaders($headers)->get('/api/players/loser');
         $response->assertStatus($response->getStatusCode());
     }
 
@@ -126,13 +110,9 @@ class PlayerControllerTest extends TestCase
        $headers = [
             'Authorization' => 'Bearer '. $this->login(),
             'Accept' => 'application/json'
-        ];
+       ];
 
-        $data =  [
-            'name' => 'AdminPlus'
-        ];
-
-        $response = $this->withHeaders($headers)->get('/api/players/winner', $data);
+        $response = $this->withHeaders($headers)->get('/api/players/winner');
         $response->assertStatus($response->getStatusCode());
     }
 }

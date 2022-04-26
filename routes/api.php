@@ -19,9 +19,11 @@ use Illuminate\Http\Request;
 Route::post('/register', [PassportAuthController::class, 'register'])->name('api.register'); // Crea usuario
 Route::post('/login', [PassportAuthController::class, 'login'])->name('api.login');
 
+
 Route::middleware(['auth:api'])->group(function () {
     Route::get('/user', [PassportAuthController::class, 'authenticatedUser'])->name('api.passport_auth.authenticatedUser'); // Devuelve usuario logueado
 
+    Route::post('/logout', [PassportAuthController::class, 'logout'])->name('api.logout');
 
     //Route::post('/players', [PlayerController::class, 'store'])->name('api.player.store'); === REGISTER -> /register
     Route::get('/players', [PlayerController::class, 'index'])->name('api.player.index'); // Muestra usuario/s de la bbdd

@@ -6,6 +6,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+
 use App\Models\User;
 
 class PassportAuthController extends Controller
@@ -58,6 +59,19 @@ class PassportAuthController extends Controller
         }
 
         return response()->json(['error' => 'Unauthorized'], 401);
+    }
+
+    /**
+     * @param Request $request
+     * logout user to our application
+     */
+    public function logout(Request $request): JsonResponse
+    {
+        $token = Auth::user()->token();
+        $token->revoke();
+        return response()->json([
+            'message' => 'Logged out'
+        ]);
     }
 
     /**
