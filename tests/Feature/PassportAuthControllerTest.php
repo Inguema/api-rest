@@ -13,11 +13,8 @@ class PassportAuthControllerTest extends TestCase
         $response = $this->post(route('api.register'), [
             'name' => 'JMacana',
             'email' => 'jmacana@example.com',
-            'password' => '1234568999',
+            'password' => '1234Admin!'
         ]);
-
-        print_r($response->getContent());
-        print_r($response->getStatusCode());
 
         $response->assertStatus($response->getStatusCode());
     }
@@ -38,6 +35,17 @@ class PassportAuthControllerTest extends TestCase
 
     public function test_logout()
     {
+        $response = $this->post(route('api.login'), [
+            'email' => 'admin@prueba.es',
+            'password' => 'admin123'
+        ]);
 
+        $headers = [
+            'Authorization' => 'Bearer '. $response->json('token'),
+            'Accept' => 'application/json'
+        ];
+
+        $response = $this->withHeaders($headers)->get('/api/logout');
+        $response->assertStatus($response->getStatusCode());
     }
 }

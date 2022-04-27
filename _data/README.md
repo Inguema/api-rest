@@ -12,7 +12,7 @@ Seguir los pasos siguientes para probar la ejecución del proyecto api-rest:
 3- Crear la bbdd con el nombre que hemos utilizado en el archivo .env. Ejemplo: en este proyecto se llama passport_db
 
 4- Ejecutar el siguiente comando:
-````php artisan migrate:refresh --seed````
+````php artisan migrate:fresh --seed````
 
 5- Ejecutar el siguiente comando para instalar passport
 ````php artisan passport:install --force````
@@ -21,7 +21,9 @@ Seguir los pasos siguientes para probar la ejecución del proyecto api-rest:
 Datos a tener en cuenta:
 
 - La carpeta _data contiene los archivos del proyecto usados en Postman para realizar las correspondientes pruebas.
-
+  Hay que importar desde Postman los archivos ````Players Api.postman_collection.json```` y ````api-rest.postman_environment.json````
+  Para probar el api es necesario ejecutar la acción login y copiar el token que devuelve para pegarlo en la variable de entorno que se llama 
+  token. Los métodos del api que requieren autenticación ya están configurados para usar el token.
 
 - El proyecto dispone de dos tipos de roles: admin y usuario. Admin cuenta con los permisos de editar y visualizar, mientras que User solo tendrá permiso para visualizar.
 
@@ -31,4 +33,5 @@ Usuario Admin:
     'email' => 'admin@prueba.es',
     'password' => bcrypt('admin123')
 ````
+
 - Por defecto, api-rest, a cada usuario nuevo registrado le asignará el rol de user.

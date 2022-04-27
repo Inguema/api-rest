@@ -62,13 +62,14 @@ class PassportAuthController extends Controller
     }
 
     /**
-     * @param Request $request
      * logout user to our application
+     * @return JsonResponse
      */
-    public function logout(Request $request): JsonResponse
+    public function logout(): JsonResponse
     {
         $token = Auth::user()->token();
         $token->revoke();
+
         return response()->json([
             'message' => 'Logged out'
         ]);
@@ -77,7 +78,7 @@ class PassportAuthController extends Controller
     /**
      * this method returns authenticated user details
      */
-    public function authenticatedUser(Request $request): JsonResponse
+    public function authenticatedUser(): JsonResponse
     {
         return response()->json(Auth::user(), 200);
     }
